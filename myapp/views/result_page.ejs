@@ -1,0 +1,55 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+		<title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body name="tt" >
+		
+		<% if(code == `F`){ %>
+			<script type="text/javascript">
+				alert("유효하지 않은 운송장번호입니다.");
+				document.location.href = "/get_page";
+			</script>
+								
+		<% } else {%>
+			
+		<table width ="500" height="300" align = "center" style="border:1px dashed #DBDBDB;padding-top:5px; padding-bottom:5px;">
+			<tr align ="center">
+			<p><td colspan = "3" span style="font-weight: bold; font-size: 1.5em;">택배 배송조회</td></p>
+			</tr>
+			<tr align ="left" style="background-color:#DBDBDB; margin:0">
+			<p><td colspan = "3" span style="padding-left:17px; font-weight: bold; font-size: 1.2em;">택배정보</td></p>
+			</tr>
+			
+			<tr align ="left">
+			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">운송장정보</td></p>
+			<p id="num"><td colspan = "2" align ="left" ><%= number %></td></p>
+			</tr>
+			
+			<tr align ="left">
+			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">받는 사람</td></p>
+			<p id="who"><td colspan = "2" align ="left" style="padding-right:40px;"><%= who %></td></p>
+			</tr>
+			
+			<tr align ="left">
+			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">보낸 사람</td></p>
+			<p id="send"><td colspan = "2" align ="left" ><%= send %></td></p>
+			</tr>
+			
+			<tr align ="left" >
+			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">배송 상태</td></p>
+			<% if(code == `N`){ %>
+				<p id="code"><td colspan = "2" align ="left">배송 미완료</td></p>				
+			<% } else {%>
+				<p id="code"><td colspan = "2" align ="left">배송 완료</td></p>
+			<% } %>
+				
+			</tr>
+			
+		</table>
+	
+		<br/><br/>
+		<% } %>	
+    </body>
+</html>

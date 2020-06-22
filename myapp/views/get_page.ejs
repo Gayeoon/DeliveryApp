@@ -1,0 +1,47 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+		<script type="text/javascript">
+		function check()
+		{
+		  if (document.search.number.value == "")
+		  {
+			alert("송장번호를 입력해주세요!");
+			document.search.number.focus();
+			return false;
+		  }
+		  if (document.search.code.value == "none")
+		  {
+			alert("택배사를 선택해주세요!");
+			document.search.code.focus();
+			return false;
+		  }
+		  else
+		  {
+			document.search.submit();
+		  }
+		}
+		</script>
+		
+        <title><%= title %></title>
+        <link rel='stylesheet' href='/stylesheets/style.css' />
+    </head>
+    <body >
+		<div>
+		<h2 align="left" >택배를 조회해보세요!</h2>
+        <div style="border: 1px dashed #BDBDBD;  border-radius: 15px; padding: 20px; position:absolute;">
+        <form name="search" action = "/result_page" method="get" >
+            <select name="code" style="height : 30px; vertical-align:middle; padding-left:3px;">
+				<option value = "none"> 택배사를 선택해주세요 </option>
+				<option value = "04"> CJ대한통운 </option>
+				<option value = "05"> 한진택배 </option>
+				<option value = "23"> 경동택배 </option>
+			<input type="hidden" name="who" value="gaga" placeholder="Enter id here">
+			<input type="text" name="number" placeholder="운송장 번호를 -없이 입력해주세요" style="margin:5px; padding-left:5px; height : 25px; vertical-align:middle;">
+			
+            <input type="button" value="조회" onclick="check()" style="height : 30px; vertical-align:middle;">
+        </form>
+		</div>
+		</div>
+    </body>
+</html>
