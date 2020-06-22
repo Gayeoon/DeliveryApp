@@ -14,11 +14,11 @@
 								
 		<% } else {%>
 			
-		<table width ="500" height="300" align = "center" style="border:1px dashed #DBDBDB;padding-top:5px; padding-bottom:5px;">
+		<table width ="500" height="350" align = "center" style="table-layout:fixed; border:1.5px dashed #D3D3D3; border-radius: 15px; padding-top:5px; padding-bottom:5px;">
 			<tr align ="center">
 			<p><td colspan = "3" span style="font-weight: bold; font-size: 1.5em;">택배 배송조회</td></p>
 			</tr>
-			<tr align ="left" style="background-color:#DBDBDB; margin:0">
+			<tr align ="left" style="background-color:#D3D3D3; margin:0">
 			<p><td colspan = "3" span style="padding-left:17px; font-weight: bold; font-size: 1.2em;">택배정보</td></p>
 			</tr>
 			
@@ -29,7 +29,7 @@
 			
 			<tr align ="left">
 			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">받는 사람</td></p>
-			<p id="who"><td colspan = "2" align ="left" style="padding-right:40px;"><%= who %></td></p>
+			<p id="who"><td colspan = "2" align ="left" ><%= who %></td></p>
 			</tr>
 			
 			<tr align ="left">
@@ -37,9 +37,14 @@
 			<p id="send"><td colspan = "2" align ="left" ><%= send %></td></p>
 			</tr>
 			
+			<tr align ="left">
+			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">상품명</td></p>
+			<p id="item"><td colspan = "2" align ="left" style=" vertical-align:middle; text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" ><%= item %></td></p>
+			</tr>
+			
 			<tr align ="left" >
 			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">배송 상태</td></p>
-			<% if(code == `N`){ %>
+			<% if(code == `false`){ %>
 				<p id="code"><td colspan = "2" align ="left">배송 미완료</td></p>				
 			<% } else {%>
 				<p id="code"><td colspan = "2" align ="left">배송 완료</td></p>
@@ -47,6 +52,10 @@
 				
 			</tr>
 			
+			<tr align ="left">
+			<td colspan = "1" align ="left" style="padding-left:15px;"><img src="/in_on.png" alt="My Image" width="100"/></td>
+			</tr>
+
 		</table>
 	
 		<br/><br/>
