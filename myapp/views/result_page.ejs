@@ -14,48 +14,74 @@
 								
 		<% } else {%>
 			
-		<table width ="500" height="350" align = "center" style="table-layout:fixed; border:1.5px dashed #D3D3D3; border-radius: 15px; padding-top:5px; padding-bottom:5px;">
+		<table width ="500" height="550" align = "center" style="table-layout:fixed; border:1.5px dashed #D3D3D3; border-radius: 15px; padding-top:5px; padding-bottom:5px;">
 			<tr align ="center">
-			<p><td colspan = "3" span style="font-weight: bold; font-size: 1.5em;">택배 배송조회</td></p>
+			<p><td colspan = "5" span style="font-weight: bold; font-size: 1.5em;">택배 배송조회</td></p>
 			</tr>
 			<tr align ="left" style="background-color:#D3D3D3; margin:0">
-			<p><td colspan = "3" span style="padding-left:17px; font-weight: bold; font-size: 1.2em;">택배정보</td></p>
+			<p><td colspan = "5" span style="padding-left:17px; font-weight: bold; font-size: 1.2em;">택배정보</td></p>
 			</tr>
 			
 			<tr align ="left">
-			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">운송장정보</td></p>
-			<p id="num"><td colspan = "2" align ="left" ><%= number %></td></p>
+			<p><td colspan = "2" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">운송장정보</td></p>
+			<p id="num"><td colspan = "3" align ="left" ><%= number %></td></p>
 			</tr>
 			
 			<tr align ="left">
-			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">받는 사람</td></p>
-			<p id="who"><td colspan = "2" align ="left" ><%= who %></td></p>
+			<p><td colspan = "2" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">받는 사람</td></p>
+			<p id="who"><td colspan = "3" align ="left" ><%= who %></td></p>
 			</tr>
 			
 			<tr align ="left">
-			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">보낸 사람</td></p>
-			<p id="send"><td colspan = "2" align ="left" ><%= send %></td></p>
+			<p><td colspan = "2" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">보낸 사람</td></p>
+			<p id="send"><td colspan = "3" align ="left" ><%= send %></td></p>
 			</tr>
 			
 			<tr align ="left">
-			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">상품명</td></p>
-			<p id="item"><td colspan = "2" align ="left" style=" vertical-align:middle; text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" ><%= item %></td></p>
+			<p><td colspan = "2" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">상품명</td></p>
+			<p id="item"><td colspan = "3" align ="left" style=" vertical-align:middle; text-overflow:ellipsis; overflow:hidden; white-space: nowrap;" ><%= item %></td></p>
 			</tr>
 			
 			<tr align ="left" >
-			<p><td colspan = "1" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">배송 상태</td></p>
+			<p><td colspan = "2" align ="left" style="padding-left:15px; textfont-size:0.7em; color: gray">배송 상태</td></p>
 			<% if(code == `false`){ %>
-				<p id="code"><td colspan = "2" align ="left">배송 미완료</td></p>				
+				<p id="code"><td colspan = "3" align ="left">배송 미완료</td></p>				
 			<% } else {%>
-				<p id="code"><td colspan = "2" align ="left">배송 완료</td></p>
+				<p id="code"><td colspan = "3" align ="left">배송 완료</td></p>
 			<% } %>
 				
 			</tr>
 			
-			<tr align ="left">
-			<td colspan = "1" align ="left" style="padding-left:15px;"><img src="/in_on.png" alt="My Image" width="100"/></td>
+			<tr align ="left" style="background-color:#D3D3D3; margin:0">
+			<p><td colspan = "5" span style="padding-left:17px; font-weight: bold; font-size: 1.2em;">배송상세</td></p>
 			</tr>
 
+			<tr align ="left" style="height:10px">
+			</tr>
+			
+			<tr align ="left">
+			<% if(level == 2){ %>
+				<td colspan = "1" align ="left" style="padding-left:15px;"><img id="2" src="images/take_on.png" alt="My Image" width="70"/></td>
+			<% } else {%>
+				<td colspan = "1" align ="left" style="padding-left:15px;"><img id="2" src="images/take_off.png" alt="My Image" width="70"/></td>
+			<% } %>
+			<td id="3" colspan = "1" align ="left" style="padding-left:15px;"><img src="images/move_off.png" alt="My Image" width="70"/></td>
+			<td id="4" colspan = "1" align ="left" style="padding-left:15px;"><img src="images/in_off.png" alt="My Image" width="70"/></td>
+			<td id="5" colspan = "1" align ="left" style="padding-left:15px;"><img src="images/move_off.png" alt="My Image" width="70"/></td>
+			<td id="6" colspan = "1" align ="left" style="padding-left:15px;"><img src="images/receive_off.png" alt="My Image" width="70"/></td>
+			</tr>
+
+			<tr align ="left" style="height:10px">
+				<td colspan = "1" align ="center" style="height:10px; textfont-size:0.1em; color: gray">상품인수</td>
+				<td colspan = "1" align ="center" style="height:10px; textfont-size:0.1em; color: gray">상품이동</td>
+				<td colspan = "1" align ="center" style="height:10px; textfont-size:0.1em; color: gray">배송지도착</td>
+				<td colspan = "1" align ="center" style="height:10px; textfont-size:0.1em; color: gray">배송출발</td>
+				<td colspan = "1" align ="center" style="height:10px; textfont-size:0.1em; color: gray">배송완료</td>
+			</tr>
+			<tr align ="left" style="height:10px">
+			</tr>
+			
+		
 		</table>
 	
 		<br/><br/>

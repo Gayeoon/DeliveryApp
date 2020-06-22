@@ -6,10 +6,10 @@ var bodyParser = require('body-parser');
 router.get('/', function(req, res, next) {
     var code = req.query.code;
     var number = req.query.number;
-	var who = '가연';
-	var send = '언더웨어';
+	var who = '김가연';
+	var send = '11번가';
 	var item = '노트북';
-	
+	var level = '1';
 	var request=require("request")
 
 var defaultUrl="http://info.sweettracker.co.kr/" 
@@ -21,7 +21,7 @@ var defaultUrl="http://info.sweettracker.co.kr/"
 		return new Promise(resolve => { 
 			setTimeout(() => { 
 			console.log('배송상태2 : ff ');	 
-			res.render('result_page', { title: 'Express', code: code, number: number, who: who, send:send, item:item, method: "get" });
+			res.render('result_page', { title: 'Express', code: code, number: number, who: who, send:send, item:item, level:level, method: "get" });
 			
 			resolve('resolved'); 
 		}, 2000); }); 
@@ -41,13 +41,17 @@ var defaultUrl="http://info.sweettracker.co.kr/"
 				who = JSON.stringify(data.receiverName);
 				send = JSON.stringify(data.senderName);
 				item = JSON.stringify(data.itemName);
+				level = JSON.stringify(data.level);
 				console.log('who : '+ who);
 				console.log('send : '+ send);
+				console.log('level : '+ level);
 			}
 		});
 		  */
 		  code = 'false';
 				item = '옵션명 1:B_OPP비접착봉투,옵션명 2:B25_작은꽃(반투명)10장-3개 (+600원)';
+				level = '2';
+				console.log('level : '+ level);
 		var result = await resolveAfter2Seconds(); 
 		console.log(result); 
 	} 
