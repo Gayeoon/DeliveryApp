@@ -21,27 +21,28 @@
 			document.search.submit();
 		  }
 		}
+		
 		</script>
 		
         <title><%= title %></title>
-        <link rel='stylesheet' href='/stylesheets/style.css' />
+        <link rel='stylesheet' href='/stylesheets/get.css' />
     </head>
-    <body >
-		<div>
-		<h2 align="left" >택배를 조회해보세요!</h2>
-        <div style="border: 1px dashed #BDBDBD;  border-radius: 15px; padding: 20px; position:absolute;">
+    <body>
+		<div class="all">
+		<h2>택배를 조회해보세요!</h2>
+        <div class="wrap">
         <form name="search" action = "/result_page" method="get" >
-            <select name="code" style="height : 30px; vertical-align:middle; padding-left:3px;">
+            <select name="code" id="code">
 				<option value = "none"> 택배사를 선택해주세요 </option>
 				<option value = "04"> CJ대한통운 </option>
 				<option value = "05"> 한진택배 </option>
 				<option value = "23"> 경동택배 </option>
-			<input type="hidden" name="who" value="gaga" placeholder="Enter id here">
-			<input type="text" name="number" placeholder="운송장 번호를 -없이 입력해주세요" style="margin:5px; padding-left:5px; height : 25px; vertical-align:middle;">
+			<input type="number" name="number" id="number" placeholder="운송장 번호를 -없이 입력해주세요">
 			
-            <input type="button" value="조회" onclick="check()" style="height : 30px; vertical-align:middle;">
+            <input type="button" value="조회" onclick="check()" id="btn">
         </form>
 		</div>
 		</div>
+		
     </body>
 </html>

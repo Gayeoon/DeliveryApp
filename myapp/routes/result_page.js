@@ -28,7 +28,7 @@ router.get('/', function(req, res, next) {
 		} 
 		
 	async function asyncCall() { 
-	
+	/*
 		request($api_url, function(err, res, body){
 			var data = JSON.parse(body);
 			console.log(data);
@@ -64,7 +64,21 @@ router.get('/', function(req, res, next) {
 				console.log(detail);
 			} 
 		});
+		*/
 		
+		code = "대전 유성구";
+		level = "6";
+		detail = [
+  { "time": '2020-05-06 19:48:02', "d_where": '경기월산', "kind": '집화처리' },
+  { "time": '2020-05-06 19:48:02', "d_where": '남양주B', "kind": '행낭포장' },
+  { "time": '2020-05-07 00:38:34', "d_where": '군포BHub', "kind": '간선하차' },
+  { "time": '2020-05-07 00:39:18', "d_where": '군포BHub', "kind": '행낭포장' },
+  { "time": '2020-05-07 01:26:40', "d_where": '군포BHub', "kind": '간선상차' },
+  { "time": '2020-05-07 04:24:13', "d_where": '용인HUB', "kind": '간선하차' },
+  { "time": '2020-05-07 04:27:04', "d_where": '용인HUB', "kind": '간선상차' },
+  { "time": '2020-05-07 11:20:14', "d_where": '유성', "kind": '간선하차' },
+  { "time": '2020-05-07 14:02:16', "d_where": '대전유성송강', "kind": '배달출발\n(배달예정시간\n:19∼21시)' },
+  { "time": '2020-05-07 21:33:43', "d_where": '대전유성송강', "kind": '배달완료' }];
 		console.log('level : '+ level);
 		var result = await resolveAfter2Seconds(); 
 		console.log(result); 
