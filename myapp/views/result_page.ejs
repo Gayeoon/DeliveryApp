@@ -1,11 +1,17 @@
+<!-- Delivery App 두번째 페이지의 HTML 문서입니다. -->
+<!-- 입력받은 택배사와 송장번호를 통해 현재 배송 상태를 출력합니다. -->
+<!-- 유효하지 않은 운송장번호 혹은 택배사를 입력했을 경우, 다시 입력 페이지로 돌아갑니다. -->
+
 <!DOCTYPE html> 
 <html>
     <head>
 		<title><%= title %></title>
         <link rel='stylesheet' href='/stylesheets/result.css' />
     </head>
-    <body name="tt" >
+    <body>
 		
+		<!-- 입력받은 택배사와 송장번호가 유효한 상태인지 확인합니다. -->
+		<!-- 유효한 상태라면 code에는 수신자의 주소가 저장되어 있습니다. -->
 		<% if(code == `F`){ %>
 			<script type="text/javascript">
 				alert("유효하지 않은 운송장번호입니다.");
@@ -13,6 +19,7 @@
 			</script>
 								
 		<% } else {%>
+		<!-- 택배의 정보를 출력합니다. -->
 		<div class="wrap" align = "center" >
 		<table height="550">
 			<tr>
@@ -23,7 +30,7 @@
 			</tr>
 			
 			<tr>
-			<td class = "contents" colspan = "2" scope="row" class="top1">운송장정보</td>
+			<td class = "contents top1" colspan = "2" scope="row">운송장정보</td>
 			<p id="num"><td colspan = "3" align ="left" class="top1"><%= number %></td></p>
 			</tr>
 			
@@ -43,12 +50,13 @@
 			</tr>
 			
 			<tr>
-			<td class = "contents" colspan = "2" scope="row" class="bottom">수령 주소</td></p>			
-				<p id="code"><td colspan = "3" align ="left" class="bottom"><%= code %></td></p>
-			
-				
+			<td class = "contents bottom" colspan = "2" scope="row">수령 주소</td></p>			
+				<p id="code"><td colspan = "3" align ="left" class="bottom"><%= code %></td></p>							
 			</tr>
 			
+			<!-- 운영자가 배송상태를 한눈에 확인 할 수 있도록 간단한 아이콘을 통해 현재 배송 진행상황을 표현했습니다. -->
+			<!-- 모든 이미지를 회색 아이콘으로 지정한 뒤에 level에 해당되는 이미지만 src를 변경하려고 했지만.. -->
+			<!-- js에서 이미지 경로를 못잡아서 하나씩 비교하고 이미지를 넣는 방식으로 구현했습니다... -->
 			<tr class="subtitle">
 			<p><td colspan = "5" scope="col">배송상세</td></p>
 			</tr>
@@ -100,6 +108,8 @@
 			</tr>				
 		</table>
 		
+		<!-- 좀 더 디테일한 배송정보가 있을 경우에는 해당 정보도 출력하도록 구현했습니다. -->
+		<!-- 배송정보가 없을 경우에는 'f' 문자열을, 있을 경우에는 해당 정보를 담은 JSONArray를 detail 변수에 저장했습니다. -->
 		<% if(detail != `f`){ %>
 		
 		<div id="top">
@@ -111,7 +121,7 @@
 				<th class="topCell3" scope="col">배송상태</th>
 			  </tr>
 			  
-			  
+			  <!-- 시간을 역순으로 출력해서 택배가 가장 마지막으로 위치한 장소와 시간, 상태를 확인할 수 있도록 구현했습니다. -->
 			  <% for(var i=detail.length-1; i>=0; i--){ %>		  
 				  <tr class="item">
 					<th class="cell1" scope="row"><%- detail[i].time %></th>
