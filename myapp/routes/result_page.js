@@ -11,8 +11,8 @@ router.get('/', function(req, res, next) {
 	var item = '노트북';
 	var level = '1';
 	var request=require("request")
-
-var defaultUrl="http://info.sweettracker.co.kr/" 
+	var detail = 'f';
+	var defaultUrl="http://info.sweettracker.co.kr/" 
 		const SERVICE_KEY="2JMpnLKoZENZZ5WbgrvJig"  
 		const $api_url = "http://info.sweettracker.co.kr/api/v1/trackingInfo"+"?t_key="+SERVICE_KEY+"&t_code="+code+"&t_invoice="+number;
 
@@ -21,22 +21,23 @@ var defaultUrl="http://info.sweettracker.co.kr/"
 		return new Promise(resolve => { 
 			setTimeout(() => { 
 			console.log('배송상태2 : ff ');	 
-			res.render('result_page', { title: 'Express', code: code, number: number, who: who, send:send, item:item, level:level, method: "get" });
+			res.render('result_page', { title: 'Gayeon Delivery', code: code, number: number, who: who, send:send, item:item, level:level, detail:detail, method: "get" });
 			
 			resolve('resolved'); 
 		}, 2000); }); 
 		} 
 		
 	async function asyncCall() { 
-		/*request($api_url, function(err, res, body){
+	
+		request($api_url, function(err, res, body){
 			var data = JSON.parse(body);
 			console.log(data);
 			if(data.hasOwnProperty('msg')){
-				code = 'false';
+				code = 'F';
 				item = '옵션명 1:B_OPP비접착봉투,옵션명 2:B25_작은꽃(반투명)10장-3개 (+600원)';
 			}else{
 				console.log($api_url);		
-				code = JSON.stringify(data.complete);
+				code = JSON.stringify(data.receiverAddr);
 				console.log('배송상태1 : '+ code); 
 				who = JSON.stringify(data.receiverName);
 				send = JSON.stringify(data.senderName);
@@ -45,13 +46,26 @@ var defaultUrl="http://info.sweettracker.co.kr/"
 				console.log('who : '+ who);
 				console.log('send : '+ send);
 				console.log('level : '+ level);
-			}
+				
+				if(data.hasOwnProperty('trackingDetails')){
+					var ja = new Array();
+					for(var i=0; i<data.trackingDetails.length; i++){
+						var jo = new Object();
+						jo.time = data.trackingDetails[i].timeString;
+						jo.d_where = data.trackingDetails[i].where;
+						jo.kind = data.trackingDetails[i].kind;
+						ja.push(jo);
+					}
+					detail = ja;
+				}
+				
+				console.log(ja);
+				console.log('----------------------------------------------------');
+				console.log(detail);
+			} 
 		});
-		  */
-		  code = 'false';
-				item = '옵션명 1:B_OPP비접착봉투,옵션명 2:B25_작은꽃(반투명)10장-3개 (+600원)';
-				level = '2';
-				console.log('level : '+ level);
+		
+		console.log('level : '+ level);
 		var result = await resolveAfter2Seconds(); 
 		console.log(result); 
 	} 
